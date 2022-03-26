@@ -22,6 +22,24 @@ class ViewController: UIViewController {
                 print(error?.localizedDescription ?? "")
                 self.showHint(title: "FireBase Auth fail", message: error?.localizedDescription ?? "")
             } else {
+                // 0.有變化時印出
+                self.dbRef.child("appStatus").observe(.childChanged) { dataSnapshot in
+                    print("dataSnapshot change: \(dataSnapshot)")
+                    print()
+                }
+                self.dbRef.child("appStatus").observe(.childAdded) { dataSnapshot in
+                    print("dataSnapshot add: \(dataSnapshot)")
+                    print()
+                }
+                self.dbRef.child("appStatus").observe(.childMoved) { dataSnapshot in
+                    print("dataSnapshot moved: \(dataSnapshot)")
+                    print()
+                }
+                self.dbRef.child("appStatus").observe(.childRemoved) { dataSnapshot in
+                    print("dataSnapshot remove: \(dataSnapshot)")
+                    print()
+                }
+                
                 // 1.讀取資料
                 self.dbRef.child("appStatus/ver").observeSingleEvent(of: .value) { (snapshot) in
                     print("App Codename:\(snapshot.value as! Int)")
