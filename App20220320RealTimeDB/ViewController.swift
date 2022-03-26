@@ -52,6 +52,9 @@ class ViewController: UIViewController {
                 let dateString = df.string(from: date)
                 
                 self.dbRef.child("appStatus/description").setValue("這是測試的資料 in \(dateString)")
+                
+                // 3.Add auto id
+                self.dbRef.child("appStatus/setting/time").childByAutoId().setValue(ServerValue.timestamp())
             }
         }
     }
