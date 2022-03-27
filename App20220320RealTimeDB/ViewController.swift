@@ -10,13 +10,13 @@ import Firebase
 
 class ViewController: UIViewController {
     // 設定資料庫reference
-    var dbRef:DatabaseReference!
+//    var dbRef:DatabaseReference!
     
     @IBOutlet weak var nickNameTF: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dbRef = Database.database().reference()
+//        dbRef = Database.database().reference()
         
         Auth.auth().signInAnonymously { (user, error) in
             if error != nil {
@@ -29,47 +29,47 @@ class ViewController: UIViewController {
     }
 
     
-    func testRealTimeDB() {
-        // 0.有變化時印出
-        self.dbRef.child("appStatus").observe(.childChanged) { dataSnapshot in
-            print("dataSnapshot change: \(dataSnapshot)")
-            print()
-        }
-        self.dbRef.child("appStatus").observe(.childAdded) { dataSnapshot in
-            print("dataSnapshot add: \(dataSnapshot)")
-            print()
-        }
-        self.dbRef.child("appStatus").observe(.childMoved) { dataSnapshot in
-            print("dataSnapshot moved: \(dataSnapshot)")
-            print()
-        }
-        self.dbRef.child("appStatus").observe(.childRemoved) { dataSnapshot in
-            print("dataSnapshot remove: \(dataSnapshot)")
-            print()
-        }
-        
-        // 1.讀取資料
-        self.dbRef.child("appStatus/ver").observeSingleEvent(of: .value) { (snapshot) in
-            print("App Codename:\(snapshot.value as! Int)")
-        }
-        
-        // 2.寫入資料
-        let date = Date()
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateString = df.string(from: date)
-        
-        self.dbRef.child("appStatus/description").setValue("這是測試的資料 in \(dateString)")
-        
-        let arr = ["👚", "👔", "👛"]
-        self.dbRef.child("appStatus/array").setValue(arr)
-        
-        let dic = ["name": "Grace", "children": 2] as [String: Any]
-        self.dbRef.child("appStatus/dictory").setValue(dic)
-        
-        // 3.Add auto id
-        self.dbRef.child("appStatus/setting/time").childByAutoId().setValue(ServerValue.timestamp())
-    }
+//    func testRealTimeDB() {
+//        // 0.有變化時印出
+//        self.dbRef.child("appStatus").observe(.childChanged) { dataSnapshot in
+//            print("dataSnapshot change: \(dataSnapshot)")
+//            print()
+//        }
+//        self.dbRef.child("appStatus").observe(.childAdded) { dataSnapshot in
+//            print("dataSnapshot add: \(dataSnapshot)")
+//            print()
+//        }
+//        self.dbRef.child("appStatus").observe(.childMoved) { dataSnapshot in
+//            print("dataSnapshot moved: \(dataSnapshot)")
+//            print()
+//        }
+//        self.dbRef.child("appStatus").observe(.childRemoved) { dataSnapshot in
+//            print("dataSnapshot remove: \(dataSnapshot)")
+//            print()
+//        }
+//
+//        // 1.讀取資料
+//        self.dbRef.child("appStatus/ver").observeSingleEvent(of: .value) { (snapshot) in
+//            print("App Codename:\(snapshot.value as! Int)")
+//        }
+//
+//        // 2.寫入資料
+//        let date = Date()
+//        let df = DateFormatter()
+//        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        let dateString = df.string(from: date)
+//
+//        self.dbRef.child("appStatus/description").setValue("這是測試的資料 in \(dateString)")
+//
+//        let arr = ["👚", "👔", "👛"]
+//        self.dbRef.child("appStatus/array").setValue(arr)
+//
+//        let dic = ["name": "Grace", "children": 2] as [String: Any]
+//        self.dbRef.child("appStatus/dictory").setValue(dic)
+//
+//        // 3.Add auto id
+//        self.dbRef.child("appStatus/setting/time").childByAutoId().setValue(ServerValue.timestamp())
+//    }
     
     func showHint(title: String, message: String) {
         // 建立一個提示框
