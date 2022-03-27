@@ -56,6 +56,9 @@ class ViewController: UIViewController {
                 let arr = ["👚", "👔", "👛"]
                 self.dbRef.child("appStatus/array").setValue(arr)
                 
+                let dic = ["name": "Grace", "children": 2] as [String: Any]
+                self.dbRef.child("appStatus/dictory").setValue(dic)
+                
                 // 3.Add auto id
                 self.dbRef.child("appStatus/setting/time").childByAutoId().setValue(ServerValue.timestamp())
             }
