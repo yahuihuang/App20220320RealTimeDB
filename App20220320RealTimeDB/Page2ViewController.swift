@@ -13,6 +13,8 @@ class Page2ViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var dbRef:DatabaseReference!
     var nickname = ""
     var subjectArray: [String] = []
+    var keyArray: [String] = []
+    var selectedId = 0
     
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
@@ -28,11 +30,15 @@ class Page2ViewController: UIViewController, UITableViewDelegate, UITableViewDat
         dbRef = Database.database().reference().child("for/subs")
         dbRef.observeSingleEvent(of: .value) { dataSnapshot in
             self.subjectArray.removeAll()
+            self.keyArray.removeAll()
             
             for item in dataSnapshot.children {
                 if let mySubject = item as? DataSnapshot {
                     let subject = mySubject.childSnapshot(forPath: "subject").value as? String ?? ""
                     self.subjectArray.append(subject)
+                    
+                    let key = mySubject.key
+                    self.keyArray.append(key)
                 }
             }
             
@@ -40,6 +46,13 @@ class Page2ViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             // 讀完資料要重Load TableView
             self.myTableView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextVC = segue.destination as? Page3ViewController {
+            nextVC.key = keyArray[selectedId]
+            nextVC.subject = subjectArray[selectedId]
         }
     }
     
@@ -52,6 +65,10 @@ class Page2ViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = UITableViewCell()
         cell.textLabel?.text = subjectArray[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "goPage3", sender: self)
     }
     
 }

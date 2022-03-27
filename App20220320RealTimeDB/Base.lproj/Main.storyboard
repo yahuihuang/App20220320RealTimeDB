@@ -49,12 +49,63 @@
                     <navigationItem key="navigationItem" id="707-Mw-sI1"/>
                     <connections>
                         <outlet property="nickNameTF" destination="WSZ-D6-g7v" id="HSP-Zl-Ahz"/>
-                        <segue destination="s3O-l8-WXi" kind="show" identifier="goPage2" id="gPu-W6-EzN"/>
+                        <segue destination="s3O-l8-WXi" kind="show" identifier="goPage2" id="Me6-t6-Lbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="992.75362318840587" y="53.571428571428569"/>
+        </scene>
+        <!--Page3 View Controller-->
+        <scene sceneID="gtN-yn-e7i">
+            <objects>
+                <viewController id="79j-xR-O2z" customClass="Page3ViewController" customModule="App20220320RealTimeDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lo0-vb-c2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請留言" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7EV-G2-gTD">
+                                <rect key="frame" x="20" y="108" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8lw-QG-Y4J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vr-sD-JO3">
+                                <rect key="frame" x="341" y="148" width="53" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2ap-NO-9Vm"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="發送">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="newMessageAction:" destination="79j-xR-O2z" eventType="touchUpInside" id="dzf-s1-Vzg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SKn-xE-rQV"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="tintColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="0.65793557359999999" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7EV-G2-gTD" firstAttribute="top" secondItem="SKn-xE-rQV" secondAttribute="top" constant="20" id="SND-XC-If9"/>
+                            <constraint firstItem="SKn-xE-rQV" firstAttribute="trailing" secondItem="7EV-G2-gTD" secondAttribute="trailing" constant="20" id="lMl-oH-S7p"/>
+                            <constraint firstItem="7EV-G2-gTD" firstAttribute="leading" secondItem="SKn-xE-rQV" secondAttribute="leading" constant="20" id="tfx-rg-qsL"/>
+                            <constraint firstItem="0Vr-sD-JO3" firstAttribute="top" secondItem="7EV-G2-gTD" secondAttribute="bottom" constant="10" id="uiG-Ze-Tw0"/>
+                            <constraint firstItem="SKn-xE-rQV" firstAttribute="trailing" secondItem="0Vr-sD-JO3" secondAttribute="trailing" constant="20" id="yv2-O3-ZfB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uie-z1-UOM"/>
+                    <connections>
+                        <outlet property="ctf" destination="7EV-G2-gTD" id="liz-0n-tNx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ljt-Oa-8DR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3480" y="53"/>
         </scene>
         <!--Page2 View Controller-->
         <scene sceneID="WOZ-B0-R2G">
@@ -81,11 +132,12 @@
                     <navigationItem key="navigationItem" id="0Po-gp-jc4"/>
                     <connections>
                         <outlet property="myTableView" destination="5Bv-s5-8mP" id="PpX-pO-0fw"/>
+                        <segue destination="79j-xR-O2z" kind="show" identifier="goPage3" id="j5y-Au-uII"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0E-hj-a9q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2042.0289855072465" y="53.571428571428569"/>
+            <point key="canvasLocation" x="2317" y="54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uel-PY-t7o">
@@ -112,6 +164,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

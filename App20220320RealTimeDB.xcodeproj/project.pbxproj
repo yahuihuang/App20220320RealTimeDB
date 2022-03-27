@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		65A39C0027F048E800C9E4C3 /* Page2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A39BFF27F048E800C9E4C3 /* Page2ViewController.swift */; };
+		65A39C0227F059D000C9E4C3 /* Page3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A39C0127F059CF00C9E4C3 /* Page3ViewController.swift */; };
 		65B2BE8427EEAEB8006E796B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2BE8327EEAEB8006E796B /* AppDelegate.swift */; };
 		65B2BE8627EEAEB8006E796B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2BE8527EEAEB8006E796B /* SceneDelegate.swift */; };
 		65B2BE8827EEAEB8006E796B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2BE8727EEAEB8006E796B /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		65A39BFF27F048E800C9E4C3 /* Page2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2ViewController.swift; sourceTree = "<group>"; };
+		65A39C0127F059CF00C9E4C3 /* Page3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3ViewController.swift; sourceTree = "<group>"; };
 		65B2BE8027EEAEB8006E796B /* App20220320RealTimeDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App20220320RealTimeDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B2BE8327EEAEB8006E796B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65B2BE8527EEAEB8006E796B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				65B2BE9127EEAEBA006E796B /* Info.plist */,
 				65B2BE9727EEAF49006E796B /* GoogleService-Info.plist */,
 				65A39BFF27F048E800C9E4C3 /* Page2ViewController.swift */,
+				65A39C0127F059CF00C9E4C3 /* Page3ViewController.swift */,
 			);
 			path = App20220320RealTimeDB;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				65B2BE8827EEAEB8006E796B /* ViewController.swift in Sources */,
 				65B2BE8427EEAEB8006E796B /* AppDelegate.swift in Sources */,
 				65A39C0027F048E800C9E4C3 /* Page2ViewController.swift in Sources */,
+				65A39C0227F059D000C9E4C3 /* Page3ViewController.swift in Sources */,
 				65B2BE8627EEAEB8006E796B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
