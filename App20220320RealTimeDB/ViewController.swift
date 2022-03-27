@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     // 設定資料庫reference
     var dbRef:DatabaseReference!
     
+    @IBOutlet weak var nickNameTF: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,49 +23,54 @@ class ViewController: UIViewController {
                 print(error?.localizedDescription ?? "")
                 self.showHint(title: "FireBase Auth fail", message: error?.localizedDescription ?? "")
             } else {
-                // 0.有變化時印出
-                self.dbRef.child("appStatus").observe(.childChanged) { dataSnapshot in
-                    print("dataSnapshot change: \(dataSnapshot)")
-                    print()
-                }
-                self.dbRef.child("appStatus").observe(.childAdded) { dataSnapshot in
-                    print("dataSnapshot add: \(dataSnapshot)")
-                    print()
-                }
-                self.dbRef.child("appStatus").observe(.childMoved) { dataSnapshot in
-                    print("dataSnapshot moved: \(dataSnapshot)")
-                    print()
-                }
-                self.dbRef.child("appStatus").observe(.childRemoved) { dataSnapshot in
-                    print("dataSnapshot remove: \(dataSnapshot)")
-                    print()
-                }
-                
-                // 1.讀取資料
-                self.dbRef.child("appStatus/ver").observeSingleEvent(of: .value) { (snapshot) in
-                    print("App Codename:\(snapshot.value as! Int)")
-                }
-                
-                // 2.寫入資料
-                let date = Date()
-                let df = DateFormatter()
-                df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                let dateString = df.string(from: date)
-                
-                self.dbRef.child("appStatus/description").setValue("這是測試的資料 in \(dateString)")
-                
-                let arr = ["👚", "👔", "👛"]
-                self.dbRef.child("appStatus/array").setValue(arr)
-                
-                let dic = ["name": "Grace", "children": 2] as [String: Any]
-                self.dbRef.child("appStatus/dictory").setValue(dic)
-                
-                // 3.Add auto id
-                self.dbRef.child("appStatus/setting/time").childByAutoId().setValue(ServerValue.timestamp())
+//                self.testRealTimeDB()
             }
         }
     }
 
+    
+    func testRealTimeDB() {
+        // 0.有變化時印出
+        self.dbRef.child("appStatus").observe(.childChanged) { dataSnapshot in
+            print("dataSnapshot change: \(dataSnapshot)")
+            print()
+        }
+        self.dbRef.child("appStatus").observe(.childAdded) { dataSnapshot in
+            print("dataSnapshot add: \(dataSnapshot)")
+            print()
+        }
+        self.dbRef.child("appStatus").observe(.childMoved) { dataSnapshot in
+            print("dataSnapshot moved: \(dataSnapshot)")
+            print()
+        }
+        self.dbRef.child("appStatus").observe(.childRemoved) { dataSnapshot in
+            print("dataSnapshot remove: \(dataSnapshot)")
+            print()
+        }
+        
+        // 1.讀取資料
+        self.dbRef.child("appStatus/ver").observeSingleEvent(of: .value) { (snapshot) in
+            print("App Codename:\(snapshot.value as! Int)")
+        }
+        
+        // 2.寫入資料
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = df.string(from: date)
+        
+        self.dbRef.child("appStatus/description").setValue("這是測試的資料 in \(dateString)")
+        
+        let arr = ["👚", "👔", "👛"]
+        self.dbRef.child("appStatus/array").setValue(arr)
+        
+        let dic = ["name": "Grace", "children": 2] as [String: Any]
+        self.dbRef.child("appStatus/dictory").setValue(dic)
+        
+        // 3.Add auto id
+        self.dbRef.child("appStatus/setting/time").childByAutoId().setValue(ServerValue.timestamp())
+    }
+    
     func showHint(title: String, message: String) {
         // 建立一個提示框
         let alertController = UIAlertController(
@@ -88,6 +94,24 @@ class ViewController: UIViewController {
           animated: true,
           completion: nil)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextVC = segue.destination as? Page2ViewController {
+            nextVC.nickname = nickNameTF.text ?? ""
+        }
+    }
+    
+    @IBAction func goPage2(_ sender: Any) {
+        let nickName = nickNameTF.text ?? ""
+        if nickName.count < 1{
+            let alert = UIAlertController(title: "請輸入名字", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+            return
+        }
+        //go Next page
+        
+        self.performSegue(withIdentifier: "goPage2", sender: self)
+    }
 }
 
