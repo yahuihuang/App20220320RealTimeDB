@@ -63,10 +63,25 @@
                     <view key="view" contentMode="scaleToFill" id="Ka3-Au-5XE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Bv-s5-8mP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="3dS-4D-VTe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3dS-4D-VTe" firstAttribute="trailing" secondItem="5Bv-s5-8mP" secondAttribute="trailing" id="68H-ii-mNz"/>
+                            <constraint firstItem="5Bv-s5-8mP" firstAttribute="leading" secondItem="3dS-4D-VTe" secondAttribute="leading" id="Oi1-i8-usH"/>
+                            <constraint firstItem="5Bv-s5-8mP" firstAttribute="top" secondItem="3dS-4D-VTe" secondAttribute="top" id="XwW-cp-ycF"/>
+                            <constraint firstItem="3dS-4D-VTe" firstAttribute="bottom" secondItem="5Bv-s5-8mP" secondAttribute="bottom" id="sDH-Wi-XtL"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Po-gp-jc4"/>
+                    <connections>
+                        <outlet property="myTableView" destination="5Bv-s5-8mP" id="PpX-pO-0fw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0E-hj-a9q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
