@@ -53,6 +53,7 @@ class Page2ViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let nextVC = segue.destination as? Page3ViewController {
             nextVC.key = keyArray[selectedId]
             nextVC.subject = subjectArray[selectedId]
+            nextVC.nickName = nickname
         }
     }
     

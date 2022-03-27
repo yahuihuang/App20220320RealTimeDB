@@ -86,21 +86,30 @@
                                     <action selector="newMessageAction:" destination="79j-xR-O2z" eventType="touchUpInside" id="dzf-s1-Vzg"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fh8-gc-r1k">
+                                <rect key="frame" x="20" y="198" width="374" height="664"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SKn-xE-rQV"/>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <color key="tintColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="0.65793557359999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="SKn-xE-rQV" firstAttribute="trailing" secondItem="fh8-gc-r1k" secondAttribute="trailing" constant="20" id="C2z-zd-hEr"/>
                             <constraint firstItem="7EV-G2-gTD" firstAttribute="top" secondItem="SKn-xE-rQV" secondAttribute="top" constant="20" id="SND-XC-If9"/>
+                            <constraint firstItem="fh8-gc-r1k" firstAttribute="top" secondItem="7EV-G2-gTD" secondAttribute="bottom" constant="60" id="Sns-kO-2gg"/>
                             <constraint firstItem="SKn-xE-rQV" firstAttribute="trailing" secondItem="7EV-G2-gTD" secondAttribute="trailing" constant="20" id="lMl-oH-S7p"/>
+                            <constraint firstItem="fh8-gc-r1k" firstAttribute="leading" secondItem="SKn-xE-rQV" secondAttribute="leading" constant="20" id="s7N-6u-xx4"/>
                             <constraint firstItem="7EV-G2-gTD" firstAttribute="leading" secondItem="SKn-xE-rQV" secondAttribute="leading" constant="20" id="tfx-rg-qsL"/>
                             <constraint firstItem="0Vr-sD-JO3" firstAttribute="top" secondItem="7EV-G2-gTD" secondAttribute="bottom" constant="10" id="uiG-Ze-Tw0"/>
+                            <constraint firstItem="SKn-xE-rQV" firstAttribute="bottom" secondItem="fh8-gc-r1k" secondAttribute="bottom" id="wH6-bl-aor"/>
                             <constraint firstItem="SKn-xE-rQV" firstAttribute="trailing" secondItem="0Vr-sD-JO3" secondAttribute="trailing" constant="20" id="yv2-O3-ZfB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uie-z1-UOM"/>
                     <connections>
                         <outlet property="ctf" destination="7EV-G2-gTD" id="liz-0n-tNx"/>
+                        <outlet property="page3TableView" destination="fh8-gc-r1k" id="dau-YI-OPQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljt-Oa-8DR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

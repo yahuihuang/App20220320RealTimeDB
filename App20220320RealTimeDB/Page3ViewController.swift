@@ -8,11 +8,15 @@
 import UIKit
 import Firebase
 
-class Page3ViewController: UIViewController {
+class Page3ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var page3TableView: UITableView!
     // 設定資料庫reference
     var dbRef: DatabaseReference!
     var key = ""
     var subject = ""
+    var nickName = ""
+    var contentArray: [String] = []
     
     @IBOutlet weak var ctf: UITextField!
     override func viewDidLoad() {
@@ -22,7 +26,26 @@ class Page3ViewController: UIViewController {
         
         // MARK: RealTime DataBase
         dbRef = Database.database().reference().child("disc").child(key)
+        
+        // MARK: TableView
+        page3TableView.delegate = self
+        page3TableView.dataSource = self
+        
+        dbRef.observe(.value) { dataSnapshot in
+            self.contentArray.removeAll()
+            for item in dataSnapshot.children {
+                if let content = item as? DataSnapshot {
+                    print(content)
+                    
+                    let contentData = content.childSnapshot(forPath: "content").value as? String ?? ""
+                    self.contentArray.append(contentData)
+                }
+                
+                self.page3TableView.reloadData()
+            }
+        }
     }
+
 
     @IBAction func newMessageAction(_ sender: Any) {
         let newMsg = ctf.text ?? ""
@@ -33,7 +56,19 @@ class Page3ViewController: UIViewController {
             return
         }
         
-        dbRef.childByAutoId().child("content").setValue(newMsg)
+        dbRef.childByAutoId().child("content").setValue("[\(nickName)] \(newMsg)")
         ctf.text = ""
     }
+    
+    // MARK: TableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contentArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = contentArray[indexPath.row]
+        return cell
+    }
+    
 }
