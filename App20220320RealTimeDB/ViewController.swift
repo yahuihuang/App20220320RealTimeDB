@@ -53,6 +53,9 @@ class ViewController: UIViewController {
                 
                 self.dbRef.child("appStatus/description").setValue("這是測試的資料 in \(dateString)")
                 
+                let arr = ["👚", "👔", "👛"]
+                self.dbRef.child("appStatus/array").setValue(arr)
+                
                 // 3.Add auto id
                 self.dbRef.child("appStatus/setting/time").childByAutoId().setValue(ServerValue.timestamp())
             }
